@@ -10,7 +10,7 @@
 
 
 
-export default function transform(root)) {
+export default function transform(root) {
   let content = root.root().text();
 
   // If this CSS file already has @import "tailwindcss", check if it needs @theme

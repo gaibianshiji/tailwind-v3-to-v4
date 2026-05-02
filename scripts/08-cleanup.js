@@ -8,7 +8,7 @@
 
 
 
-export default function transform(root)) {
+export default function transform(root) {
   let content = root.root().text();
 
   // Remove duplicate spaces in class attributes

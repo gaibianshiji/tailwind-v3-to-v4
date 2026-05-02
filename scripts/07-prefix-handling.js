@@ -31,7 +31,7 @@ function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-export default function transform(root)) {
+export default function transform(root) {
   let content = root.root().text();
 
   // Only transform within class/className attributes

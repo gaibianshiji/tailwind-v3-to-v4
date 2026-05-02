@@ -14,7 +14,7 @@ const OPACITY_PREFIXES = [
   'from', 'to', 'via', 'outline', 'shadow', 'accent', 'caret', 'fill', 'stroke',
 ];
 
-export default function transform(root)) {
+export default function transform(root) {
   let content = root.root().text();
 
   // Only transform within class/className attributes

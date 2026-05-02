@@ -9,7 +9,7 @@
 
 
 
-export default function transform(root)) {
+export default function transform(root) {
   let content = root.root().text();
 
   // Combined @tailwind directives → @import "tailwindcss"
