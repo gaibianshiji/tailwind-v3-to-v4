@@ -5,25 +5,25 @@ nodes:
     steps:
       - name: "Rename shadow, rounded, blur, outline classes"
         js-ast-grep:
-          js_file: scripts/01-class-renames.ts
+          js_file: scripts/01-class-renames.js
           language: typescript
-          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+          include: ["**/*.html", "**/*.jsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.js", "**/*.js"]
 
   - id: opacity-merge
     name: "Merge opacity utilities with colors"
     steps:
       - name: "Convert bg-opacity-*/text-opacity-* to slash notation"
         js-ast-grep:
-          js_file: scripts/02-opacity-merge.ts
+          js_file: scripts/02-opacity-merge.js
           language: typescript
-          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+          include: ["**/*.html", "**/*.jsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.js", "**/*.js"]
 
   - id: directives
     name: "Update CSS directives"
     steps:
       - name: "Replace @tailwind with @import, update @layer"
         js-ast-grep:
-          js_file: scripts/03-directives.ts
+          js_file: scripts/03-directives.js
           language: typescript
           include: ["**/*.css"]
 
@@ -32,7 +32,7 @@ nodes:
     steps:
       - name: "Convert tailwind.config.js theme to @theme CSS"
         js-ast-grep:
-          js_file: scripts/04-config-migration.ts
+          js_file: scripts/04-config-migration.js
           language: typescript
           include: ["**/*.css"]
 
@@ -41,33 +41,33 @@ nodes:
     steps:
       - name: "Replace flex-grow, flex-shrink, overflow-ellipsis, etc."
         js-ast-grep:
-          js_file: scripts/05-deprecated-utils.ts
+          js_file: scripts/05-deprecated-utils.js
           language: typescript
-          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+          include: ["**/*.html", "**/*.jsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.js", "**/*.js"]
 
   - id: ring-outline
     name: "Update ring and outline utilities"
     steps:
       - name: "Migrate ring and outline class changes"
         js-ast-grep:
-          js_file: scripts/06-ring-outline.ts
+          js_file: scripts/06-ring-outline.js
           language: typescript
-          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+          include: ["**/*.html", "**/*.jsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.js", "**/*.js"]
 
   - id: prefix-handling
     name: "Handle responsive and state prefixes"
     steps:
       - name: "Apply renames with hover:, md:, focus: etc. prefixes"
         js-ast-grep:
-          js_file: scripts/07-prefix-handling.ts
+          js_file: scripts/07-prefix-handling.js
           language: typescript
-          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+          include: ["**/*.html", "**/*.jsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.js", "**/*.js"]
 
   - id: cleanup
     name: "Final cleanup and validation"
     steps:
       - name: "Remove empty lines, validate no broken classes"
         js-ast-grep:
-          js_file: scripts/08-cleanup.ts
+          js_file: scripts/08-cleanup.js
           language: typescript
-          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js", "**/*.css"]
+          include: ["**/*.html", "**/*.jsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.js", "**/*.js", "**/*.css"]

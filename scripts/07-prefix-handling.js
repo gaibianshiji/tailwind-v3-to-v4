@@ -9,10 +9,10 @@
  * might have been missed.
  */
 
-import type { SgRoot, SgNode } from 'codemod:ast-grep';
+
 
 // All class renames that need prefix-aware matching
-const PREFIXED_RENAMES: [string, string][] = [
+const PREFIXED_RENAMES = [
   ['shadow-sm', 'shadow-xs'],
   ['shadow', 'shadow-sm'],
   ['rounded-sm', 'rounded-xs'],
@@ -27,15 +27,15 @@ const PREFIXED_RENAMES: [string, string][] = [
   ['overflow-ellipsis', 'text-ellipsis'],
 ];
 
-function escapeRegex(str: string): string {
+function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-export default function transform(root: SgRoot): string {
+export default function transform(root)) {
   let content = root.root().text();
 
   // Only transform within class/className attributes
-  content = content.replace(/(?:class|className)="([^"]*)"/g, (match: string, classes: string) => {
+  content = content.replace(/(?:class|className)="([^"]*)"/g, (match, classes) => {
     let newClasses = classes;
     for (const [oldClass, newClass] of PREFIXED_RENAMES) {
       if (['shadow', 'rounded', 'blur'].includes(oldClass)) {

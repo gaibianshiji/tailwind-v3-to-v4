@@ -9,9 +9,9 @@
  * Only transforms within class/className attributes to avoid false positives.
  */
 
-import type { SgRoot, SgNode } from 'codemod:ast-grep';
 
-const RENAMES: [string, string][] = [
+
+const RENAMES = [
   ['shadow-sm', 'shadow-xs'],
   ['shadow', 'shadow-sm'],
   ['rounded-sm', 'rounded-xs'],
@@ -23,15 +23,15 @@ const RENAMES: [string, string][] = [
   ['inset-shadow', 'inset-shadow-sm'],
 ];
 
-function escapeRegex(str: string): string {
+function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-export default function transform(root: SgRoot): string {
+export default function transform(root)) {
   let content = root.root().text();
 
   // Only transform within class/className attributes
-  content = content.replace(/(?:class|className)="([^"]*)"/g, (match: string, classes: string) => {
+  content = content.replace(/(?:class|className)="([^"]*)"/g, (match, classes) => {
     let newClasses = classes;
     for (const [oldClass, newClass] of RENAMES) {
       if (['shadow', 'rounded', 'blur', 'inset-shadow'].includes(oldClass)) {

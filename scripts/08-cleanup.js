@@ -6,19 +6,19 @@
  * - Validate no broken class names
  */
 
-import type { SgRoot, SgNode } from 'codemod:ast-grep';
 
-export default function transform(root: SgRoot): string {
+
+export default function transform(root)) {
   let content = root.root().text();
 
   // Remove duplicate spaces in class attributes
-  content = content.replace(/class="([^"]*?)"/g, (_match: string, classes: string) => {
+  content = content.replace(/class="([^"]*?)"/g, (_match, classes) => {
     const cleaned = classes.replace(/\s+/g, ' ').trim();
     return `class="${cleaned}"`;
   });
 
   // Also handle className (React/JSX)
-  content = content.replace(/className="([^"]*?)"/g, (_match: string, classes: string) => {
+  content = content.replace(/className="([^"]*?)"/g, (_match, classes) => {
     const cleaned = classes.replace(/\s+/g, ' ').trim();
     return `className="${cleaned}"`;
   });

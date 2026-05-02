@@ -8,9 +8,9 @@
  * Note: Full config parsing requires JS AST analysis. This handles common patterns.
  */
 
-import type { SgRoot, SgNode } from 'codemod:ast-grep';
 
-export default function transform(root: SgRoot): string {
+
+export default function transform(root)) {
   let content = root.root().text();
 
   // If this CSS file already has @import "tailwindcss", check if it needs @theme

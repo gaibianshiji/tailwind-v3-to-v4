@@ -7,9 +7,9 @@
  * - @layer base/components/utilities still work but @theme is new
  */
 
-import type { SgRoot, SgNode } from 'codemod:ast-grep';
 
-export default function transform(root: SgRoot): string {
+
+export default function transform(root)) {
   let content = root.root().text();
 
   // Combined @tailwind directives → @import "tailwindcss"

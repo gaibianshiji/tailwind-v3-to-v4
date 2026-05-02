@@ -11,9 +11,9 @@
  * Only transforms within class/className attributes to avoid false positives.
  */
 
-import type { SgRoot, SgNode } from 'codemod:ast-grep';
 
-const DEPRECATED_RENAMES: [string, string][] = [
+
+const DEPRECATED_RENAMES = [
   ['flex-grow-0', 'grow-0'],
   ['flex-grow', 'grow'],
   ['flex-shrink-0', 'shrink-0'],
@@ -23,15 +23,15 @@ const DEPRECATED_RENAMES: [string, string][] = [
   ['decoration-slice', 'box-decoration-slice'],
 ];
 
-function escapeRegex(str: string): string {
+function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-export default function transform(root: SgRoot): string {
+export default function transform(root)) {
   let content = root.root().text();
 
   // Only transform within class/className attributes
-  content = content.replace(/(?:class|className)="([^"]*)"/g, (match: string, classes: string) => {
+  content = content.replace(/(?:class|className)="([^"]*)"/g, (match, classes) => {
     let newClasses = classes;
     for (const [oldClass, newClass] of DEPRECATED_RENAMES) {
       const regex = new RegExp(`\\b${escapeRegex(oldClass)}\\b`, 'g');
