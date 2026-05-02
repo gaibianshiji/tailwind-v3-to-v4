@@ -1,0 +1,12 @@
+{
+  "name": "tailwind-v3-to-v4",
+  "version": "1.0.0",
+  "description": "Automated codemod for migrating Tailwind CSS v3 to v4",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/run-tests.mjs",
+    "migrate": "node migrate.mjs"
+  },
+  "keywords": ["tailwind", "tailwindcss", "codemod", "migration", "v3", "v4"],
+  "license": "MIT"
+}

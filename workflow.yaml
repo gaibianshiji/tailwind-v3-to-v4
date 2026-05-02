@@ -1,0 +1,73 @@
+version: "1.0.0"
+nodes:
+  - id: class-renames
+    name: "Rename shifted utility classes"
+    steps:
+      - name: "Rename shadow, rounded, blur, outline classes"
+        js-ast-grep:
+          js_file: scripts/01-class-renames.ts
+          language: typescript
+          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+
+  - id: opacity-merge
+    name: "Merge opacity utilities with colors"
+    steps:
+      - name: "Convert bg-opacity-*/text-opacity-* to slash notation"
+        js-ast-grep:
+          js_file: scripts/02-opacity-merge.ts
+          language: typescript
+          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+
+  - id: directives
+    name: "Update CSS directives"
+    steps:
+      - name: "Replace @tailwind with @import, update @layer"
+        js-ast-grep:
+          js_file: scripts/03-directives.ts
+          language: typescript
+          include: ["**/*.css"]
+
+  - id: config-migration
+    name: "Migrate tailwind.config to CSS"
+    steps:
+      - name: "Convert tailwind.config.js theme to @theme CSS"
+        js-ast-grep:
+          js_file: scripts/04-config-migration.ts
+          language: typescript
+          include: ["**/*.css"]
+
+  - id: deprecated-utils
+    name: "Replace deprecated utilities"
+    steps:
+      - name: "Replace flex-grow, flex-shrink, overflow-ellipsis, etc."
+        js-ast-grep:
+          js_file: scripts/05-deprecated-utils.ts
+          language: typescript
+          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+
+  - id: ring-outline
+    name: "Update ring and outline utilities"
+    steps:
+      - name: "Migrate ring and outline class changes"
+        js-ast-grep:
+          js_file: scripts/06-ring-outline.ts
+          language: typescript
+          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+
+  - id: prefix-handling
+    name: "Handle responsive and state prefixes"
+    steps:
+      - name: "Apply renames with hover:, md:, focus: etc. prefixes"
+        js-ast-grep:
+          js_file: scripts/07-prefix-handling.ts
+          language: typescript
+          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js"]
+
+  - id: cleanup
+    name: "Final cleanup and validation"
+    steps:
+      - name: "Remove empty lines, validate no broken classes"
+        js-ast-grep:
+          js_file: scripts/08-cleanup.ts
+          language: typescript
+          include: ["**/*.html", "**/*.jsx", "**/*.tsx", "**/*.vue", "**/*.svelte", "**/*.ts", "**/*.js", "**/*.css"]

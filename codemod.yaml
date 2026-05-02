@@ -1,0 +1,24 @@
+schema_version: "1.0"
+name: "tailwind-v3-to-v4"
+version: 1.0.0
+description: "Automated migration from Tailwind CSS v3 to v4. Covers 90%+ of deterministic changes: class renames, opacity syntax, config migration, directive updates, and deprecated utility replacements."
+author: "boringAI"
+license: "MIT"
+targets:
+  languages:
+    - typescript
+    - javascript
+    - html
+    - css
+keywords:
+  - tailwind
+  - tailwindcss
+  - migration
+  - v3
+  - v4
+  - css
+  - frontend
+  - codemod
+registry:
+  access: public
+  visibility: public
